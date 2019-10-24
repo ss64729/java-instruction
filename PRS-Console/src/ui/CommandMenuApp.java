@@ -69,9 +69,15 @@ public class CommandMenuApp {
 	}
 
 	private static void deleteUser(ArrayList<User> users) {
-		showUsers(users);
-		int delUser = Console.getInt("Enter User Id you want to delete ");
-		users.remove(delUser - 1);
+		for (int i = 0; i < users.size(); i++) {
+			System.out.println((i + 1) + ". " + users.get(i));
+		}
+		int delUser = Console.getInt("Enter Number you want to delete ");
+		if (delUser > users.size()) {
+			System.out.println("Number not available");
+		} else {
+			users.remove(delUser - 1);
+		}
 	}
 
 	private static void selectUser(ArrayList<User> users) {
@@ -83,6 +89,7 @@ public class CommandMenuApp {
 				System.out.println(u);
 			}
 		}
+		System.out.println("No user match.");
 	}
 
 	private static void showUsers(ArrayList<User> users) {
@@ -94,8 +101,9 @@ public class CommandMenuApp {
 	private static ArrayList<User> createUsers() {
 
 		// When I put the 0 in for isReviewer is when it prompted me to change from
-		// boolean to int.  I also tried it in quotes.   At one point I put false and it still didn't like it.  
-		 
+		// boolean to int. I also tried it in quotes. At one point I put false and it
+		// still didn't like it.
+
 		User u1 = new User(1, "ss64729", "max129", "Sarah", "Sizemore", "513-222-2323", "sarah.sizemore@test.com", 0,
 				0);
 		User u2 = new User(2, "ss12345", "max129", "Susan", "Smith", "513-222-1222", "susan.smith@test.com", 0, 0);
